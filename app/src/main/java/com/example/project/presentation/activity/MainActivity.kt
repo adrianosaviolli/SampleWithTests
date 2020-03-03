@@ -24,6 +24,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         btn_subtract.setOnClickListener {
             presenter.calculate(this, ProjectBusiness.SUBTRACT, edt_number1, edt_number2)
         }
+        btn_multiplication.setOnClickListener {
+            presenter.calculate(this, ProjectBusiness.MULT, edt_number1, edt_number2)
+        }
+        btn_division.setOnClickListener {
+            presenter.calculate(this, ProjectBusiness.DIVIDE, edt_number1, edt_number2)
+        }
     }
 
     override fun showResult(result: String) {

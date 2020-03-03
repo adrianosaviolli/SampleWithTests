@@ -13,6 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class MainActivityTest {
@@ -28,10 +29,19 @@ class MainActivityTest {
         onView(withId(R.id.edt_number2))
             .check(matches(isDisplayed()))
 
+        onView(withId(R.id.nested_scrollview))
+            .perform(swipeUp())
+
         onView(withId(R.id.btn_sum))
             .check(matches(isDisplayed()))
 
         onView(withId(R.id.btn_subtract))
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.btn_division))
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.btn_multiplication))
             .check(matches(isDisplayed()))
     }
 
@@ -75,5 +85,43 @@ class MainActivityTest {
 
         onView(withId(R.id.tv_result))
             .check(matches(withText("1.0")))
+    }
+
+    @Test
+    fun testMult(){
+        onView(withId(R.id.edt_number1))
+            .perform(typeText("5"), closeSoftKeyboard())
+
+        onView(withId(R.id.edt_number2))
+            .perform(typeText("5"), closeSoftKeyboard())
+
+        onView(withId(R.id.btn_multiplication))
+            .perform(scrollTo())
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.btn_multiplication))
+            .perform(click())
+
+        onView(withId(R.id.tv_result))
+            .check(matches(withText("25.0")))
+    }
+
+    @Test
+    fun testDiv(){
+        onView(withId(R.id.edt_number1))
+            .perform(typeText("10"), closeSoftKeyboard())
+
+        onView(withId(R.id.edt_number2))
+            .perform(typeText("2"), closeSoftKeyboard())
+
+        onView(withId(R.id.btn_division))
+            .perform(scrollTo())
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.btn_division))
+            .perform(click())
+
+        onView(withId(R.id.tv_result))
+            .check(matches(withText("5.0")))
     }
 }

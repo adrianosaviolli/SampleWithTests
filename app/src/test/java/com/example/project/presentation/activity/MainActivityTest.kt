@@ -26,6 +26,8 @@ class MainActivityTest : AutoCloseKoinTest() {
     private var edt1 : EditText? = null
     private var edt2 : EditText? = null
     private var tvResult : TextView? = null
+    private var btnMult: Button? = null
+    private var btnDiv: Button? = null
 
     @Before
     fun init() {
@@ -37,6 +39,8 @@ class MainActivityTest : AutoCloseKoinTest() {
 
         btnSum = view?.findViewById(R.id.btn_sum) as Button
         btnSub = view?.findViewById(R.id.btn_subtract) as Button
+        btnMult = view?.findViewById(R.id.btn_multiplication) as Button
+        btnDiv = view?.findViewById(R.id.btn_division) as Button
         edt1 = view?.findViewById(R.id.edt_number1) as EditText
         edt2 = view?.findViewById(R.id.edt_number2) as EditText
         tvResult = view?.findViewById(R.id.tv_result) as TextView
@@ -54,6 +58,9 @@ class MainActivityTest : AutoCloseKoinTest() {
         assertEquals(View.VISIBLE, edt1?.visibility)
         assertEquals(View.VISIBLE, edt2?.visibility)
         assertEquals(View.VISIBLE, tvResult?.visibility)
+        assertEquals(View.VISIBLE, btnMult?.visibility)
+        assertEquals(View.VISIBLE, btnDiv?.visibility)
+
     }
 
     @Test
@@ -80,5 +87,26 @@ class MainActivityTest : AutoCloseKoinTest() {
         btnSub?.performClick()
 
         assertEquals("0.0", tvResult?.text)
+
+    }
+
+    @Test
+    fun testMult() {
+        edt1?.setText("10")
+        edt2?.setText("23")
+
+        btnMult?.performClick()
+
+        assertEquals("230.0", tvResult?.text)
+    }
+
+    @Test
+    fun testDiv() {
+        edt1?.setText("10")
+        edt2?.setText("2")
+
+        btnDiv?.performClick()
+
+        assertEquals("5.0",tvResult?.text)
     }
 }

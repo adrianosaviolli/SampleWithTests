@@ -10,6 +10,12 @@ class ProjectBusiness {
             SUBTRACT -> {
                 return number1-number2
             }
+            MULT -> {
+                return number1*number2
+            }
+            DIVIDE -> {
+                return number1/number2
+            }
         }
         return 0.0
     }
@@ -21,5 +27,7 @@ class ProjectBusiness {
     companion object {
         const val SUM = "SUM"
         const val SUBTRACT = "SUBTRACT"
+        const val MULT = "MULTIPLY"
+        const val DIVIDE = "DIVIDE"
     }
 }
