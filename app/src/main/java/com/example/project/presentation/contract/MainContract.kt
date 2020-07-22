@@ -9,7 +9,6 @@ interface MainContract {
         fun showResult(result: String)
         fun showError(error: String)
     }
-
     interface Presenter {
         fun calculate(view: MainActivity, operation: String, number1: EditText, number2: EditText)
     }
