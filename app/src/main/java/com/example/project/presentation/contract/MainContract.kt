@@ -6,6 +6,13 @@ import com.example.project.presentation.activity.MainActivity
 interface MainContract {
 
     interface View {
+
+
+
+
+
+
+
         fun showResult(result: String)
 
         fun showError(error: String)
