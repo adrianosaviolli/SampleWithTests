@@ -6,6 +6,7 @@ import com.example.project.presentation.presenter.MainPresenter
 import org.koin.dsl.module
 
 val projectModule = module {
+
     single { ProjectBusiness() }
 
     single { MainActivity() }

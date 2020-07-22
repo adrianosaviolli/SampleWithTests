@@ -16,15 +16,19 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         btn_sum.setOnClickListener {
             presenter.calculate(this, ProjectBusiness.SUM, edt_number1, edt_number2)
         }
+
         btn_subtract.setOnClickListener {
             presenter.calculate(this, ProjectBusiness.SUBTRACT, edt_number1, edt_number2)
         }
+
         btn_multiplication.setOnClickListener {
             presenter.calculate(this, ProjectBusiness.MULT, edt_number1, edt_number2)
         }
+
         btn_division.setOnClickListener {
             presenter.calculate(this, ProjectBusiness.DIVIDE, edt_number1, edt_number2)
         }
