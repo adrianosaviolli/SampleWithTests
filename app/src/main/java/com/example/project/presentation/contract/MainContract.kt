@@ -8,11 +8,6 @@ interface MainContract {
     interface View {
 
 
-
-
-
-
-
         fun showResult(result: String)
 
         fun showError(error: String)
