@@ -1,22 +1,31 @@
 package com.example.project.presentation.presenter
 
-import android.widget.EditText
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.project.business.ProjectBusiness
-import com.example.project.presentation.activity.MainActivity
+import com.example.project.event.Event
 import com.example.project.presentation.contract.MainContract
 
 class MainPresenter(private val business: ProjectBusiness) : MainContract.Presenter {
 
-    override fun calculate(view: MainActivity, operation: String, number1: EditText, number2: EditText) {
-        if (business.isValidInfo(number1.text?.toString()) && business.isValidInfo(number2.text?.toString())) {
-            val result = business.calculate(operation,
-                number1.text.toString().toDouble(),
-                number2.text.toString().toDouble()
-            ).toString()
+    private var _handleLiveData : MutableLiveData<Event<Double>> = MutableLiveData()
 
-            view.showResult(result)
+    private var _handleLiveDataError : MutableLiveData<Event<Double>> = MutableLiveData()
+
+    override fun calculate(operation: String, number1: Double?, number2: Double?) {
+        if (business.isValidInfo(number1) && business.isValidInfo(number2)) {
+            val result = business.calculate(operation, number1!!, number2!!)
+            _handleLiveData.postValue(Event(result))
         } else {
-            view.showError("Erro, campos em branco")
+            _handleLiveDataError.postValue(Event(1.0))
         }
+    }
+
+    fun handleLiveData() : LiveData<Event<Double>> {
+        return _handleLiveData
+    }
+
+    fun handleLiveDataError() : LiveData<Event<Double>> {
+        return _handleLiveDataError
     }
 }

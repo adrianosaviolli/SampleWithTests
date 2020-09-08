@@ -5,29 +5,29 @@ class ProjectBusiness {
     fun calculate(operation: String, number1: Double, number2: Double) : Double {
         when(operation) {
             SUM -> {
-                return number1+number2
+                return number1 + number2
             }
-            SUBTRACT -> {
-                return number1-number2
+            SUB -> {
+                return number1 - number2
             }
-            MULT -> {
-                return number1*number2
+            MUL -> {
+                return number1 * number2
             }
-            DIVIDE -> {
-                return number1/number2
+            DIV -> {
+                return number1 / number2
             }
         }
         return 0.0
     }
 
-    fun isValidInfo(info: String?) : Boolean {
-        return !info.isNullOrBlank()
+    fun isValidInfo(info: Double?) : Boolean {
+        return info != null
     }
 
     companion object {
         const val SUM = "SUM"
-        const val SUBTRACT = "SUBTRACT"
-        const val MULT = "MULTIPLY"
-        const val DIVIDE = "DIVIDE"
+        const val SUB = "SUB"
+        const val MUL = "MUL"
+        const val DIV = "DIV"
     }
 }

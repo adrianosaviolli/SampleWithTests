@@ -64,12 +64,6 @@ class MainActivityTest : AutoCloseKoinTest() {
     }
 
     @Test
-    fun testFieldNull() {
-        btnSum?.performClick()
-        assertEquals("Erro, campos em branco", tvResult?.text)
-    }
-
-    @Test
     fun testSum() {
         edt1?.setText("10")
         edt2?.setText("10")

@@ -1,4 +1,5 @@
 package com.example.project.event
 
-interface OnEventChanged {
+interface OnEventChanged<T> {
+    fun onChanged(data: T)
 }

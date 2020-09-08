@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sample Project for Tests</string>
+
+    <string name="error">Erro no calculo</string>
 </resources>

@@ -8,7 +8,7 @@ import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
 
-class ProjectBusinessTest : AutoCloseKoinTest(){
+class ProjectBusinessTest : AutoCloseKoinTest() {
 
     private val business: ProjectBusiness by inject()
 
@@ -22,23 +22,18 @@ class ProjectBusinessTest : AutoCloseKoinTest(){
     @Test
     fun calculate() {
         assertEquals(2.0, business.calculate(ProjectBusiness.SUM, 1.0, 1.0))
-        assertEquals(1.0, business.calculate(ProjectBusiness.SUBTRACT, 2.0, 1.0))
-        assertEquals(8.0, business.calculate(ProjectBusiness.MULT, 4.0, 2.0))
-        assertEquals(2.0, business.calculate(ProjectBusiness.DIVIDE, 4.0, 2.0))
+        assertEquals(1.0, business.calculate(ProjectBusiness.SUB, 2.0, 1.0))
+        assertEquals(8.0, business.calculate(ProjectBusiness.MUL, 4.0, 2.0))
+        assertEquals(2.0, business.calculate(ProjectBusiness.DIV, 4.0, 2.0))
     }
 
     @Test
     fun isValidInfo() {
-        assertEquals(true, business.isValidInfo("123"))
+        assertEquals(true, business.isValidInfo(1.0))
     }
 
     @Test
     fun isInvalidInfo() {
         assertEquals(false, business.isValidInfo(null))
-    }
-
-    @Test
-    fun isEmptyInfo() {
-        assertEquals(false, business.isValidInfo(""))
     }
 }
